@@ -14,7 +14,12 @@ public class BoardDAO {
 	private SqlSessionTemplate mybatis;
 
 	public List<BoardVO> getBoardList() {
-		System.out.println("===> Mybatis·Î getBoardList() ±â´É Ã³¸®");
+		System.out.println("===> Mybatisï¿½ï¿½ getBoardList()");
 		return mybatis.selectList("test.mappers.BoardMapper.getBoardList");
+	}
+	
+	public BoardVO getContent(int idx) {
+		System.out.println("in BoardDAO idx : "+idx);
+		return mybatis.selectOne("test.mappers.BoardMapper.getContent", idx);
 	}
 }

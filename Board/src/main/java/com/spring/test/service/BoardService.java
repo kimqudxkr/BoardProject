@@ -6,4 +6,5 @@ import com.spring.test.domain.BoardVO;
 
 public interface BoardService {
 	List<BoardVO> getBoardList();
+	BoardVO getContent(int idx);
 }

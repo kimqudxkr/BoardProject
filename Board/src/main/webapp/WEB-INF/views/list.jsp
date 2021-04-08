@@ -19,6 +19,7 @@
 			<th bgcolor="" width="145">글쓴이</th>
 			<th bgcolor="" width="57">날짜</th>
 			<th bgcolor="" width="36">조회</th>
+			<th bgcolor="" width="100">내용</th>
 		</tr>
 		<c:choose>
 			<c:when test="${!empty boardList}">
@@ -26,17 +27,18 @@
 					<tr>
 						<td align="center">${board.idx }</td>
 						<td align="center"><input type="checkbox"/></td>
-						<td align="left"><a href="getContent.do?idx=${board.idx }">
+						<td align="left"><a href="content?idx=${board.idx }">
 								${board.title }</a></td>
 						<td>${board.writer }</td>
 						<td align="center"><fmt:formatDate value="${board.regDate }" pattern="MM-dd"/></td>
 						<td align="center">${board.cnt }</td>
+						<td>${board.content }</td>
 					</tr>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
 				<tr>
-					<td colspan="5">등록된 글이 없습니다.</td>
+					<td colspan="6">등록된 글이 없습니다.</td>
 				</tr>
 			</c:otherwise>
 		</c:choose>

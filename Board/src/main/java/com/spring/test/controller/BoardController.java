@@ -2,6 +2,8 @@ package com.spring.test.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,7 @@ public class BoardController {
 	//글 목록 보기 요청 시
 	@RequestMapping("/")
 	public String getBoardList(BoardVO vo, Model model) {
-		return "index"; // View �̸� ����
+		return "index";
 	}
 		
 	@RequestMapping("/list")
@@ -29,11 +31,27 @@ public class BoardController {
 		 
 		// Model에 데이터 전달.
 		model.addAttribute("boardList",boardList);
-		return "list"; // View �̸� ����
+		System.out.println("After DB data : "+boardList);
+		
+		return "list"; 
 	}
 	
 	@RequestMapping("/write")
 	public String write() {
 		return "write";
+	}
+	
+	@RequestMapping("/content")
+	public String getContent(HttpServletRequest request, BoardVO vo, Model model) {
+		 String s_idx = request.getParameter("idx");
+		 int idx = Integer.parseInt(s_idx);
+		 System.out.println("in Controller idx : "+idx);
+		 
+		 BoardVO boardList = boardService.getContent(idx);
+		 System.out.println("After DB data : "+boardList);
+		 
+		// Model에 데이터 전달.
+		model.addAttribute("boardList",boardList);
+		return "content"; 
 	}
 }

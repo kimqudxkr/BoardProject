@@ -5,4 +5,8 @@
 	<select id="getBoardList" resultType="BoardVO">
 		SELECT * FROM boardtest ORDER BY idx DESC
 	</select>
+	
+	<select id="getContent" resultType="BoardVO">
+		SELECT * FROM boardtest WHERE idx = #{idx}
+	</select>
 </mapper>
