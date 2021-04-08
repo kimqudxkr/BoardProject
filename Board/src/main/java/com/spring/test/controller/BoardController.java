@@ -17,14 +17,23 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	//±Û ¸ñ·Ï °Ë»ö
-	@RequestMapping("/getBoardList.do")
+	//ê¸€ ëª©ë¡ ë³´ê¸° ìš”ì²­ ì‹œ
+	@RequestMapping("/")
 	public String getBoardList(BoardVO vo, Model model) {
-		System.out.println("getBoardingList()");
+		return "index"; // View ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+	}
+		
+	@RequestMapping("/list")
+	public String getMain(BoardVO vo, Model model) {
 		 List<BoardVO> boardList = boardService.getBoardList();
 		 
-		// Model Á¤º¸ ÀúÀå
+		// Modelì— ë°ì´í„° ì „ë‹¬.
 		model.addAttribute("boardList",boardList);
-		return "boardList"; // View ÀÌ¸§ ¸®ÅÏ
+		return "list"; // View ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+	}
+	
+	@RequestMapping("/write")
+	public String write() {
+		return "write";
 	}
 }
